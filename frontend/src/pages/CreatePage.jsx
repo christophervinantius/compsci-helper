@@ -92,7 +92,9 @@ export default function CreatePage(){
             </Form>
             {successPopUp && (
                 <PopUp 
+                    type="info"
                     show={successPopUp}
+                    title="Post Creation Success"
                     message="Your post has been created successfully."
                     variant="success"
                     navigateTo="/"
@@ -100,8 +102,10 @@ export default function CreatePage(){
             )}
             {failPopUp && (
                 <PopUp 
+                    type="info"
                     show={failPopUp}
                     setShow={() => setFailPopUp(false)}
+                    title="Post Creation Failed"
                     message="Failed to create post. Please try again."
                     variant="danger"
                 />

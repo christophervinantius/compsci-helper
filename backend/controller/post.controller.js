@@ -2,8 +2,14 @@ import mongoose from "mongoose"
 import Post from "../models/post.model.js"
 
 export const getPosts = async (req, res) => {
+    const keyword = req.query.keyword || ''
     try{
-        const posts = await Post.find({})
+        const posts = await Post.find({
+            $or: [
+                {title: { $regex: keyword, $options: 'i' }},
+                {content: { $regex: keyword, $options: 'i' }}
+            ]
+        });
         res.status(200).json({success: true, data: posts})
     }catch(error){
         console.log(error.message)
