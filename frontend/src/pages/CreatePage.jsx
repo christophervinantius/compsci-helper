@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import Tooltip from 'react-bootstrap/Tooltip'
@@ -13,11 +13,15 @@ export default function CreatePage(){
         title: "",
         content: ""
     })
+    
+    useEffect(() => {
+        console.log(import.meta.env.MODE)
+    }, [])
 
     const handleCreatePost = async (newPost) => {
         const {title, content} = newPost
 
-        const response = await fetch("http://localhost:5000/api/posts", {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/posts`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
