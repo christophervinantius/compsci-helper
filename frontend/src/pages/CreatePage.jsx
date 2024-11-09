@@ -18,6 +18,10 @@ export default function CreatePage(){
         console.log(import.meta.env.MODE)
     }, [])
 
+    if(import.meta.env.MODE === "development"){
+        console.log(import.meta.env.VITE_API_URL)
+    }
+
     const handleCreatePost = async (newPost) => {
         const {title, content} = newPost
 
