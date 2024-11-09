@@ -9,7 +9,7 @@ export default function App(){
   const [filteredPosts, setFilteredPosts] = useState([])
 
   const getPostsByKeyword = async (keyword) => {
-    const response = await fetch(`${import.meta.env.VITE_API_URL}/posts?keyword=${encodeURIComponent(keyword)}`)
+    const response = await fetch(`/api/posts?keyword=${encodeURIComponent(keyword)}`)
     const data = await response.json()
     setFilteredPosts(data.data)
   }

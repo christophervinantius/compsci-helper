@@ -15,7 +15,7 @@ export default function HomePage({filteredPosts}){
     const [posts, setPosts] = useState([])
 
     const getAllPosts = async () => {
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/posts`)
+        const response = await fetch(`/api/posts`)
         const data = await response.json()
         setPosts(data.data)
     }
@@ -30,7 +30,7 @@ export default function HomePage({filteredPosts}){
 
     const handleEditPost = async (post) => {
         const id = post._id
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/posts/${id}`, {
+        const response = await fetch(`/api/posts/${id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
@@ -46,7 +46,7 @@ export default function HomePage({filteredPosts}){
     }
 
     const handleDeletePost = async (id) => {
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/posts/${id}`, {
+        const response = await fetch(`/api/posts/${id}`, {
             method: "DELETE"
         })
 
